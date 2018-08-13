@@ -177,7 +177,7 @@ export default {
       localStorage.setItem('currency', this.$root.$data.settings.currency)
       localStorage.setItem('format', this.$root.$data.settings.format)
       // go home
-      router.push('/')
+      router.replace('/')
     }
   }
 }

@@ -1,14 +1,3 @@
-/*jslint browser: true*/
-/*global $, spark, navigation, window, document*/
-
-// if device goes offline, show connection page
-window.addEventListener('offline', function() {
-  app.$data.route = 'connection';
-});
-// if device comes online, show connection page
-window.addEventListener('online', function() {
-  app.$data.route = 'home';
-});
 // add listener for android back button
 document.addEventListener("backbutton", onBackKeyDown, false);
 // android back key event handler
@@ -78,15 +67,3 @@ window.addEventListener('keydown', function(e) {
     }
   }
 }, false)
-
-// when vue instance is created (app is started), do these things
-async created() {
-  // if device is offline, show connection page
-  if (!navigator.onLine) {
-    this.route = 'connection'
-  }
-  // if there's no account saved, show settings page
-  if (!localStorage.getItem('account')) {
-    this.route = 'settings'
-  }
-}

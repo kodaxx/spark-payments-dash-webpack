@@ -16,12 +16,30 @@ import router from './router'
 
 export default {
   name: 'App',
+
+  sockets: {
+    connect: function () {
+      console.log('connected to insight')
+    },
+
+    disconnect: function () {
+      console.log('disconnected from insight')
+      router.push('/connection')
+    }
+  },
+
   methods: {
     settings: function () {
       router.push('/settings')
     },
     cancel: function () {
       router.go(-1)
+    }
+  },
+
+  created () {
+    if (!this.connected) {
+      router.push('/connection')
     }
   }
 }
