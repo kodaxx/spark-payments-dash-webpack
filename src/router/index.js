@@ -16,7 +16,7 @@ export default new Router({
       component: Charge
     },
     {
-      path: '/sale/confirmed',
+      path: '/sale/confirmed/:status',
       name: 'Confirmed',
       component: Confirmed
     },

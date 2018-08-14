@@ -1,7 +1,10 @@
 <template>
   <div>
     <br>
-    <p>Payment Received!&nbsp;<img v-show="locked === false" :class="lockClass" src="../assets/img/unlocked.png"></p>
+    <p>Payment Received!&nbsp;
+      <img v-if="locked === '1'" id="lock" src="../assets/img/locked.png">
+      <img v-else id="lock" src="../assets/img/unlocked.png">
+    </p>
     <br>
     <img src='../assets/img/confirm.png'>
     <br>
@@ -19,15 +22,29 @@ export default {
 
   data () {
     return {
-      locked: false,
-      lockClass: 'lock'
+      locked: '0'
     }
   },
 
   methods: {
     done: function () {
+      // navigate home
       router.replace('/')
     }
+  },
+
+  created () {
+    // set the status
+    this.locked = this.$route.params.status
+    // stop listening for tx events
+    this.$socket.emit('unsubscribe', 'inv')
+    console.log('not listening')
+  },
+
+  mounted () {
+    // ka-fucking-ching!
+    let audio = new Audio(require('../assets/kaching.mp3'))
+    audio.play()
   }
 
 }
@@ -41,13 +58,9 @@ export default {
     text-align: center;
     font-size: 30px;
   }
-  .lock {
-    width: 5.5vw;
+  #lock {
+    width: 23px;
     display: inline;
-  }
-
-  .unlocked {
-    fill: var(--red);
   }
   /* charge button */
   button {

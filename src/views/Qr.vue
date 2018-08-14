@@ -11,7 +11,7 @@
       <qrcode :value="uri" :options="{ size: 256, backgroundAlpha: 0, foregroundAlpha: 0.8, level: 'H', padding: 15 }" :tag="'img'"></qrcode>
       <p v-show="this.tx.received > 0">received: {{ partial }} {{ this.$root.$data.settings.format }}</p>
       <p v-show="this.tx.received == 0">waiting for payment...</p>
-      <progress id="waiting" value="0" max="120"></progress>
+      <!-- <progress id="waiting" value="0" max="120"></progress> -->
       <br>
       <button @click="cancel" class="cancel">cancel</button>
     </div>
@@ -59,7 +59,7 @@ export default {
   sockets: {
     // listen for 'tx' event from insight
     tx: function (data) {
-      console.log(data)
+      // bind 'this' for use inside the function
       let vm = this
       // check each address in vout
       data.vout.forEach(function (output) {
@@ -70,11 +70,12 @@ export default {
           // set amount received and instantsend status
           vm.tx.received = amount[0] / 100000000
           vm.tx.locked = data.txlock
+          let status = vm.tx.locked ? '1' : '0'
           console.log(`incoming: ${vm.tx.received} to ${address[0]}`)
           console.log(`instantsend: ${vm.tx.locked}`)
           // if the amount is what we're looking for (or more), show confirmed screen
           if (vm.tx.received >= parseFloat(vm.price.dash)) {
-            router.replace('/sale/confirmed')
+            router.replace(`/sale/confirmed/${status}`)
           }
         }
       })
