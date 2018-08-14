@@ -9,11 +9,11 @@
       <span>{{ amount }}</span>
       <p id="price">~ {{ unitPrice }}</p>
       <qrcode :value="uri" :options="{ size: 256, backgroundAlpha: 0, foregroundAlpha: 0.8, level: 'H', padding: 15 }" :tag="'img'"></qrcode>
-      <p v-show="this.tx.received > 0">received: {{ partial }} {{ this.$root.$data.settings.format }}</p>
-      <p v-show="this.tx.received == 0">waiting for payment...</p>
+      <p v-show="this.tx.received > 0">{{ language.partial }}: {{ partial }} {{ this.$root.$data.settings.format }}</p>
+      <p v-show="this.tx.received == 0">{{ language.waiting }}</p>
       <!-- <progress id="waiting" value="0" max="120"></progress> -->
       <br>
-      <button @click="cancel" class="cancel">cancel</button>
+      <button @click="cancel" class="cancel">{{ language.cancel }}</button>
     </div>
   </div>
 </template>
@@ -23,6 +23,7 @@ import Vue from 'vue'
 import * as spark from './../assets/js/helpers'
 import VueQrcode from '@xkeshi/vue-qrcode'
 import router from '../router'
+import translations from './../assets/lang.json'
 
 Vue.component(VueQrcode.name, VueQrcode)
 
@@ -42,7 +43,8 @@ export default {
       tx: {
         received: 0,
         locked: false
-      }
+      },
+      language: ''
     }
   },
 
@@ -105,7 +107,12 @@ export default {
     // loading is done
     this.loading = false
     this.loaderClasses = 'fade-out'
+  },
+
+  mounted () {
+    this.language = translations[this.$root.$data.settings.language]
   }
+
 }
 </script>
 

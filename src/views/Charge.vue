@@ -21,18 +21,21 @@
     <input @click="remove()" type='button' class='delete' value='⌫'>
     <br>
     <!-- charge button -->
-    <button @click.prevent="purchase" class="charge">charge</button>
+    <button @click.prevent="purchase" class="charge">{{ language.charge }}</button>
   </form>
 </template>
 
 <script>
 import swal from 'sweetalert'
 import router from '../router'
+import translations from './../assets/lang.json'
 
 export default {
   name: 'Charge',
+
   data () {
     return {
+      language: '',
       native: ''
     }
   },
@@ -74,7 +77,12 @@ export default {
       // show QR page and pass data
       router.push(`/sale/${this.price}`)
     }
+  },
+
+  mounted () {
+    this.language = translations[this.$root.$data.settings.language]
   }
+
 }
 </script>
 

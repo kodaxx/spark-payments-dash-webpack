@@ -1,28 +1,30 @@
 <template>
   <div>
     <br>
-    <p>Payment Received!&nbsp;
+    <p>{{ language.payment_received }}&nbsp;
       <img v-if="locked === '1'" id="lock" src="../assets/img/locked.png">
       <img v-else id="lock" src="../assets/img/unlocked.png">
     </p>
     <br>
     <img src='../assets/img/confirm.png'>
     <br>
-    <p>Thank you!</p>
+    <p>{{ language.thanks }}</p>
     <br>
-    <button @click="done">done</button>
+    <button @click="done">{{ language.done }}</button>
   </div>
 </template>
 
 <script>
 import router from '../router'
+import translations from './../assets/lang.json'
 
 export default {
   name: 'Confirmed',
 
   data () {
     return {
-      locked: '0'
+      locked: '0',
+      language: ''
     }
   },
 
@@ -45,6 +47,8 @@ export default {
     // ka-fucking-ching!
     let audio = new Audio(require('../assets/kaching.mp3'))
     audio.play()
+    // set language
+    this.language = translations[this.$root.$data.settings.language]
   }
 
 }

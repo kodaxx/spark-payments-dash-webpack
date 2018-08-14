@@ -1,0 +1,34 @@
+{
+    "en": {
+      "connected": "not connected",
+      "internet": "please check internet",
+      "address": "dash address",
+      "language": "language",
+      "currency": "local currency",
+      "format": "default dash format",
+      "save": "save",
+      "charge": "charge",
+      "partial": "received",
+      "waiting": "waiting for payment...",
+      "cancel": "cancel",
+      "payment_received": "Payment Received!",
+      "thanks": "Thank you!",
+      "done": "done"
+    },
+    "es": {
+      "connected": "no conectado",
+      "internet": "por favor revisa tu internet",
+      "address": "dirección de dash",
+      "language": "idioma",
+      "currency": "moneda local",
+      "format": "formato predeterminado de dash",
+      "save": "salvar",
+      "charge": "cobrar",
+      "partial": "recibido",
+      "waiting": "a la espera del pago...",
+      "cancel": "cancelar",
+      "payment_received": "¡Pago Recibido!",
+      "thanks": "¡Gracias!",
+      "done": "hecho"
+    }
+}

@@ -1,10 +1,15 @@
 <template>
   <form autocomplete='off'>
     <div v-if="!isAddressStored()">
-      <p>dash address</p>
+      <p>{{ language.address }}</p>
       <input v-model='address' type='text' class='input settings' value=''>
     </div>
-    <p>local currency</p>
+    <p>{{ language.language }}</p>
+    <select v-model="languages">
+        <option value="en">English</option>
+        <option value="es">Español</option>
+    </select>
+    <p>{{ language.currency }}</p>
     <select v-model="currency">
         <option value="AED">AED - United Arab Emirates Dirham</option>
         <option value="AFN">AFN - Afghan Afghani</option>
@@ -102,12 +107,12 @@
         <option value="YER">YER - Yemeni Rial</option>
         <option value="ZAR">ZAR - South African Rand</option>
     </select>
-    <p>default dash format</p>
+    <p>{{ language.format }}</p>
     <select v-model="format">
         <option value="dash">DASH</option>
         <option value="mdash">mDash</option>
     </select>
-    <button @click.prevent="save" class="regular">save</button>
+    <button @click.prevent="save" class="regular">{{ language.save }}</button>
   </form>
 </template>
 
@@ -115,9 +120,17 @@
 import { validate } from 'wallet-address-validator'
 import swal from 'sweetalert'
 import router from '../router'
+import translations from './../assets/lang.json'
 
 export default {
   name: 'Settings',
+
+  data () {
+    return {
+      language: ''
+    }
+  },
+
   computed: {
     address: {
       get () {
@@ -127,6 +140,16 @@ export default {
         this.$root.$data.settings.account = value
       }
     },
+
+    languages: {
+      get () {
+        return this.$root.$data.settings.language
+      },
+      set (value) {
+        this.$root.$data.settings.language = value
+      }
+    },
+
     currency: {
       get () {
         return this.$root.$data.settings.currency
@@ -135,6 +158,7 @@ export default {
         this.$root.$data.settings.currency = value
       }
     },
+
     format: {
       get () {
         return this.$root.$data.settings.format
@@ -143,6 +167,7 @@ export default {
         this.$root.$data.settings.format = value
       }
     }
+
   },
   methods: {
     // check if address is stored
@@ -174,11 +199,16 @@ export default {
       console.log('saved')
       // save settings to localStorage
       localStorage.setItem('account', this.$root.$data.settings.account)
+      localStorage.setItem('language', this.$root.$data.settings.language)
       localStorage.setItem('currency', this.$root.$data.settings.currency)
       localStorage.setItem('format', this.$root.$data.settings.format)
       // go home
       router.replace('/')
     }
+  },
+
+  mounted () {
+    this.language = translations[this.$root.$data.settings.language]
   }
 }
 </script>

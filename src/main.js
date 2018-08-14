@@ -16,6 +16,7 @@ new Vue({
   data: {
     settings: {
       account: localStorage.getItem('account') || '',
+      language: localStorage.getItem('language') || 'en',
       currency: localStorage.getItem('currency') || 'USD',
       format: localStorage.getItem('format') || 'dash'
     }

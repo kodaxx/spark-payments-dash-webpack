@@ -26,11 +26,12 @@ export default {
   },
 
   sockets: {
+    // on socket connection
     connect: function () {
       console.log('connected to insight')
       this.connected = true
     },
-
+    // on socket disconnect
     disconnect: function () {
       console.log('disconnected from insight')
       router.push('/connection')
@@ -46,12 +47,13 @@ export default {
       router.go(-1)
     }
   },
-
+  // when component is created, we double check that we are connected
   created () {
     if (!this.connected) {
       router.push('/connection')
     }
   }
+
 }
 </script>
 
