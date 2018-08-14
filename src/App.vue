@@ -3,6 +3,8 @@
     <span v-if='this.$route.path === "/"' @click="settings()" id="menu">☰</span>
     <span v-if='this.$route.path === "/settings"' @click="cancel()" id="menu">✕</span>
     <img class='logo' src='./assets/img/logo.png'>
+    <span v-if='connected' id="status" class="green">•</span>
+    <span v-else id="status" class="red">•</span>
       <div id="content">
         <transition name="fade">
           <router-view/>
@@ -17,14 +19,22 @@ import router from './router'
 export default {
   name: 'App',
 
+  data () {
+    return {
+      connected: false
+    }
+  },
+
   sockets: {
     connect: function () {
       console.log('connected to insight')
+      this.connected = true
     },
 
     disconnect: function () {
       console.log('disconnected from insight')
       router.push('/connection')
+      this.connected = false
     }
   },
 
@@ -57,6 +67,21 @@ export default {
     position: absolute;
     top: 10px;
     left: 20px;
+  }
+
+  #status {
+    font-size: 300%;
+    position: absolute;
+    top: -3px;
+    right: 20px;
+  }
+
+  .red {
+    color: var(--red);
+  }
+
+  .green {
+    color: var(--green);
   }
 
   @font-face {
