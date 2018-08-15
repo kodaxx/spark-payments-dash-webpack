@@ -6,8 +6,10 @@
     </div>
     <p>{{ language.language }}</p>
     <select v-model="languages">
+        <option value="de">Deutsch</option>
         <option value="en">English</option>
         <option value="es">Español</option>
+        <option value="fr">Français</option>
     </select>
     <p>{{ language.currency }}</p>
     <select v-model="currency">
