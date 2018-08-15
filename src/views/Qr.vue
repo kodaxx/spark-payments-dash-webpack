@@ -1,8 +1,9 @@
 <template>
   <div>
+    <half-circle-spinner v-if="!loading" id="spinner" :animation-duration="1000" :size="30" color="var(--primary)" />
     <transition name="fade">
       <div id="loader" :class="loaderClasses" v-show="loading">
-        <img id="icon" src="../assets/img/pageLoader.gif">
+        <hollow-dots-spinner id="icon" :animation-duration="1000" :dot-size="15" :dots-num="3" color="var(--primary)" />
       </div>
     </transition>
     <div>
@@ -11,7 +12,6 @@
       <qrcode :value="uri" :options="{ size: 256, backgroundAlpha: 0, foregroundAlpha: 0.8, level: 'H', padding: 15 }" :tag="'img'"></qrcode>
       <p v-show="this.tx.received > 0">{{ language.partial }}: {{ partial }} {{ this.$root.$data.settings.format }}</p>
       <p v-show="this.tx.received == 0">{{ language.waiting }}</p>
-      <!-- <progress id="waiting" value="0" max="120"></progress> -->
       <br>
       <button @click="cancel" class="cancel">{{ language.cancel }}</button>
     </div>
@@ -19,16 +19,20 @@
 </template>
 
 <script>
-import Vue from 'vue'
 import * as spark from './../assets/js/helpers'
 import VueQrcode from '@xkeshi/vue-qrcode'
 import router from '../router'
+import { HalfCircleSpinner, HollowDotsSpinner } from 'epic-spinners'
 import translations from './../assets/lang.json'
-
-Vue.component(VueQrcode.name, VueQrcode)
 
 export default {
   name: 'Qr',
+
+  components: {
+    'qrcode': VueQrcode,
+    HalfCircleSpinner,
+    HollowDotsSpinner
+  },
 
   data () {
     return {
@@ -130,12 +134,21 @@ export default {
   .fade-out {
     opacity: 0;
   }
-  /* loader gif icon */
+  /* loader sipinner */
   #icon {
-    display: block;
-    width: 70px;
-    margin-left: 20vh;
-    margin-top: 30vh;
+    margin: 30vh auto;
+  }
+
+  @media (min-width: 500px) {
+    #icon {
+      margin: 30vh 0 0 19.5vh;
+    }
+  }
+
+  #spinner {
+    position: absolute;
+    top: 18px;
+    left: 20px;
   }
 
   img {
@@ -154,7 +167,7 @@ export default {
   }
 
   p {
-    margin: 1% auto;
+    margin: .7% auto;
     width: 92%;
     text-align: center;
     color: var(--secondary);
@@ -169,26 +182,6 @@ export default {
     color: var(--secondary);
     font-size: 17px;
   }
-  /* expiration timer */
-  progress[value] {
-    /* reset the default appearance */
-    -webkit-appearance: none;
-    appearance: none;
-    width: 80%;
-    height: 7px;
-  }
-
-  progress[value]::-webkit-progress-bar {
-    background-color: #eee;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-  }
-
-  progress[value]::-webkit-progress-value {
-    background-color: var(--primary);
-    border-radius: 10px;
-  }
-
   /* cancel button */
   button {
     font-size: 180%;
