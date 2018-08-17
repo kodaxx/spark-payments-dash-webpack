@@ -1,4 +1,21 @@
 {
+  "ar": {
+    "connected": "غير متصل",
+    "internet": "من فظلك تحقق من الأنترنيت",
+    "address": "عنوان داش",
+    "language": "اللغة",
+    "currency": "العملة المحلية",
+    "format": "تنسيق الإفتراضي لداش",
+    "save": "حفظ",
+    "charge": "شحن",
+    "partial": "تم الإستلام",
+    "waiting": "إنتظار من اجل الدفع...",
+    "cancel": "إلغاء",
+    "payment_received": "تم إستلام الدفع",
+    "thanks": "شكرا لك!",
+    "done": "تم الأمر"
+  },
+
   "de": {
     "connected": "nicht verbunden",
     "internet": "bitte überprüfen Sie Ihr Internet",
@@ -65,5 +82,56 @@
     "payment_received": "Paiement reçu !",
     "thanks": "Merci !",
     "done": "terminé"
+  },
+
+  "it": {
+    "connected": "Non Connesso",
+    "internet": "per favore controlla internet",
+    "address": "indirizzo dash ",
+    "language": "lingua",
+    "currency": "moneta locale",
+    "format": "formato dash predfinito",
+    "save": "salva",
+    "charge": "addebito",
+    "partial": "ricevuto",
+    "waiting": "in attesa del pagamento...",
+    "cancel": "cancellare",
+    "payment_received": "Pagamento Ricevuto!",
+    "thanks": "Grazie!",
+    "done": "fatto"
+  },
+
+  "pl": {
+    "connected": "podłączony",
+    "internet": "proszę sprawdź połączenie",
+    "address": "dash adres",
+    "language": "język",
+    "currency": "lokalna waluta",
+    "format": "domyślny format dash",
+    "save": "zachowaj",
+    "charge": "zapłać",
+    "partial": "częściowy",
+    "waiting": "czekam na płatność...",
+    "cancel": "anuluj",
+    "payment_received": "Płatność otrzymana!",
+    "thanks": "Dziękuję",
+    "done": "zrobione"
+  },
+
+  "sk": {
+    "connected": "nepripojené",
+    "internet": "prosím skontrolujte pripojenie",
+    "address": "dash adresa",
+    "language": "jazyk",
+    "currency": "miestna mena",
+    "format": "predvolený formát dash",
+    "save": "uložiť",
+    "charge": "čiaska",
+    "partial": "prijaté",
+    "waiting": "čaká sa na platbu...",
+    "cancel": "zrušiť",
+    "payment_received": "Platba prijatá!",
+    "thanks": "Ďakujeme!",
+    "done": "hotovo"
   }
 }

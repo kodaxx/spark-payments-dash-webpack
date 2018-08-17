@@ -66,14 +66,14 @@ export default {
     },
     // begins purchase
     purchase: function () {
-      // subscribe to tx events
-      this.$socket.emit('subscribe', 'inv')
-      console.log('listening')
       // if amount is empty, notify merchant and stop function
       if (this.native === '' || this.native === 0) { // string vs int?
         swal('Error!', 'Price cannot be blank. Please enter an amount.', 'error')
         return
       }
+      // subscribe to tx events
+      this.$socket.emit('subscribe', 'inv')
+      console.log('listening')
       // show QR page and pass data
       router.push(`/sale/${this.price}`)
     }
