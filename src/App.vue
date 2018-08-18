@@ -36,15 +36,15 @@ export default {
       console.log('disconnected from insight')
       router.push('/connection')
       this.connected = false
-    },
-
-    ping: function () {
-      console.log('ping')
-    },
-
-    pong: function (num) {
-      console.log('pong: ' + num)
     }
+
+    // ping: function () {
+    //   console.log('ping')
+    // },
+    //
+    // pong: function (num) {
+    //   console.log('pong: ' + num)
+    // }
   },
 
   methods: {
@@ -52,7 +52,7 @@ export default {
       router.push('/settings')
     },
     cancel: function () {
-      router.go(-1)
+      router.replace('/')
     }
 
   },
@@ -61,18 +61,6 @@ export default {
     if (!this.connected) {
       router.push('/connection')
     }
-  },
-
-  mounted () {
-    let vm = this
-    setInterval(function () {
-      if (vm.$socket.connected) {
-        console.log('conneccteddd')
-      } else {
-        console.log('not conecteddd')
-      }
-      console.log(this.$socket)
-    }, 5000)
   }
 
 }

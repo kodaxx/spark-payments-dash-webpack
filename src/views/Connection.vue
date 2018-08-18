@@ -20,7 +20,11 @@ export default {
 
   sockets: {
     connect: function () {
-      router.push('/')
+      if (localStorage.getItem('account')) {
+        router.replace('/')
+      } else {
+        router.replace('/settings')
+      }
     }
   },
 
