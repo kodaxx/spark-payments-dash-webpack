@@ -1,9 +1,7 @@
 <template>
   <form autocomplete='off'>
-    <div v-if="!isAddressStored()">
-      <p>{{ language.address }}</p>
-      <input v-model='address' type='text' class='input settings' value=''>
-    </div>
+    <p>{{ language.address }}</p>
+    <input v-model='address' type='text' class='input settings' value='' :disabled="isAddressStored()">
     <p>{{ language.language }}</p>
     <select v-model="languages">
         <option value="ar">العربية</option>

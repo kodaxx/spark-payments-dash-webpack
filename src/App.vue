@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <span v-if='this.$route.path === "/"' @click="settings()" id="menu">☰</span>
-    <span v-if='this.$route.path === "/settings"' @click="cancel()" id="menu">✕</span>
+    <span v-if='this.$route.path === "/settings" && isAddressStored()' @click="cancel()" id="menu">✕</span>
     <img class='logo' src='./assets/img/logo.png'>
     <span v-if='connected' id="status" class="green">•</span>
     <span v-else id="status" class="red">•</span>
@@ -48,9 +48,15 @@ export default {
   },
 
   methods: {
+    // check if address is stored
+    isAddressStored: function () {
+      return localStorage.getItem('account')
+    },
+
     settings: function () {
       router.push('/settings')
     },
+
     cancel: function () {
       router.replace('/')
     }
