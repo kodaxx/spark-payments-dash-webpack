@@ -6,14 +6,14 @@
     </div>
     <p>{{ language.language }}</p>
     <select v-model="languages">
-        <option value="ar">عربى</option>
+        <option value="ar">العربية</option>
         <option value="de">Deutsch</option>
         <option value="en">English</option>
         <option value="es">Español</option>
         <option value="fr">Français</option>
         <option value="it">Italiano</option>
-        <option value="pl">Polskie</option>
-        <option value="sk">Slovenský</option>
+        <option value="pl">Polski</option>
+        <option value="sk">Slovenština</option>
     </select>
     <p>{{ language.currency }}</p>
     <select v-model="currency">
