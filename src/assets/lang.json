@@ -101,6 +101,23 @@
     "done": "fatto"
   },
 
+  "nl": {
+      "connected": "niet verbonden",
+      "internet": "controleer de internetverbinding",
+      "address": "Dash adres",
+      "language": "taal",
+      "currency": "lokale valuta",
+      "format": "standaard Dash eenheid",
+      "save": "opslaan",
+      "charge": "betalen",
+      "partial": "ontvangen",
+      "waiting": "wachten op betaling...",
+      "cancel": "annuleren",
+      "payment_received": "Betaling ontvangen!",
+      "thanks": "Bedankt!",
+      "done": "voltooid"
+    },
+
   "pl": {
     "connected": "podłączony",
     "internet": "proszę sprawdź połączenie",
