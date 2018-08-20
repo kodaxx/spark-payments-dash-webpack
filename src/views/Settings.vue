@@ -194,12 +194,18 @@ export default {
           console.log('not valid')
           return
         }
-      } else {
+      } else if (acct.startsWith('X')) {
         if (!validate(acct, 'dash')) {
           swal('Error!', 'Please enter a valid Dash address.', 'error')
           console.log('not valid')
           return
         }
+      } else if (acct.startsWith('xpub')) {
+        console.log('xpub, nice dude.')
+      } else {
+        swal('Error!', 'Please enter a valid Dash address.', 'error')
+        console.log('not valid')
+        return
       }
       console.log('saved')
       // save settings to localStorage
@@ -207,6 +213,7 @@ export default {
       localStorage.setItem('language', this.$root.$data.settings.language)
       localStorage.setItem('currency', this.$root.$data.settings.currency)
       localStorage.setItem('format', this.$root.$data.settings.format)
+      localStorage.setItem('index', 0)
       // go home
       router.replace('/')
     }

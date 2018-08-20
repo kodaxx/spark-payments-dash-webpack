@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@xkeshi/vue-qrcode": "^1.0.0",
+    "bitcoinjs-lib": "^4.0.1",
     "epic-spinners": "^1.0.3",
     "socket.io-client": "^2.1.1",
     "sweetalert": "^2.1.0",

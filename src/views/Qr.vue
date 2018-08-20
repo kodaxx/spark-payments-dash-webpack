@@ -39,6 +39,7 @@ export default {
       loading: true,
       loaderClasses: '',
       amount: '',
+      address: '',
       uri: '',
       price: {
         mdash: '0',
@@ -72,7 +73,7 @@ export default {
         let address = Object.keys(output)
         let amount = Object.values(output)
         // if address matches the address we have in settings
-        if (address[0] === vm.$root.$data.settings.account) {
+        if (address[0] === vm.address) {
           // set amount received and instantsend status
           vm.tx.received = amount[0] / 100000000
           vm.tx.locked = data.txlock
@@ -106,8 +107,10 @@ export default {
     this.price.dash = `${(parseFloat(this.amount) / parseFloat(await spark.getExchangeRate('DASH', this.$root.$data.settings.currency))).toFixed(8)} DASH`
     // set pice in mdash
     this.price.mdash = `${(parseFloat(this.price.dash) * 1000).toFixed(5)} mDash`
+    // get address
+    this.address = await spark.getAddress(this.$root.$data.settings.account)
     // set uri for qr code
-    this.uri = `dash:${this.$root.$data.settings.account}?amount=${parseFloat(this.price.dash)}&is=1`
+    this.uri = `dash:${this.address}?amount=${parseFloat(this.price.dash)}&is=1`
     // loading is done
     this.loading = false
     this.loaderClasses = 'fade-out'

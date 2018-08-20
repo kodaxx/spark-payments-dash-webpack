@@ -1,3 +1,5 @@
+let bitcoin = require('bitcoinjs-lib')
+
 export function getExchangeRate (token, currency) {
   return new Promise(resolve => {
     // if (currency.match( /ARS|AUD|BRL|CAD|DKK|AED|EUR|HKD|INR|ILS|KES|MXN|NZD|NOK|PHP|PLN|GBP|SGD|SEK|CHF|USD|JPY|CNY/g ) !== null) {
@@ -26,8 +28,13 @@ export function getExchangeRate (token, currency) {
 export function getAddress (account) {
   return new Promise(resolve => {
     if (account.startsWith('xpub')) {
-      console.log('xpub coming soon.')
-      // swal('Sorry', 'xPub coming soon :(', 'error')
+      // get current address index
+      let index = localStorage.getItem('index')
+      let root = bitcoin.bip32.fromBase58(account)
+      let key = root.derivePath(`0/${index}`)
+      let address = bitcoin.payments.p2pkh({ pubkey: key.publicKey, network: { pubKeyHash: 0x4c } }) // 0x4c DASH pubKeyHash
+      // return address at current index
+      resolve(address.address)
     } else {
       resolve(account)
     }

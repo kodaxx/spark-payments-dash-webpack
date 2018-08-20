@@ -41,6 +41,10 @@ export default {
     // stop listening for tx events
     this.$socket.emit('unsubscribe', 'inv')
     console.log('not listening')
+    // update xpub index on successful tx
+    let index = localStorage.getItem('index')
+    index = parseFloat(index) + 1
+    localStorage.setItem('index', index)
   },
 
   mounted () {
