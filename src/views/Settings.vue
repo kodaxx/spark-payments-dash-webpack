@@ -12,6 +12,7 @@
         <option value="it">Italiano</option>
         <option value="nl">Nederlands</option>
         <option value="pl">Polski</option>
+        <option value="pt-br">Português</option>
         <option value="sk">Slovenština</option>
     </select>
     <p>{{ language.currency }}</p>

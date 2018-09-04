@@ -135,6 +135,23 @@
     "done": "zrobione"
   },
 
+  "pt-br": {
+      "connected": "desconectado",
+      "internet": "por favor verifique internet",
+      "address": "endereço dash",
+      "language": "idioma",
+      "currency": "moeda local",
+      "format": "formato dash padrão",
+      "save": "salvar",
+      "charge": "solicitar pagamento",
+      "partial": "recebido",
+      "waiting": "aguardando pagamento..",
+      "cancel": "cancelar",
+      "payment_received": "Pagamento recebido!",
+      "thanks": "Obrigado!",
+      "done": "concluído"
+    },
+
   "sk": {
     "connected": "nepripojené",
     "internet": "prosím skontrolujte pripojenie",
