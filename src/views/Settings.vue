@@ -1,7 +1,9 @@
 <template>
   <form autocomplete='off'>
     <p>{{ language.address }}</p>
-    <input v-model='address' type='text' class='input settings' value='' :disabled="isAddressStored()">
+    <input v-model='address' type='text' class='input settings' value=''>
+    <p>{{ language.password }}</p>
+    <input v-model='password' type='password' class='input settings' value ='' :placeholder='reset()'>
     <p>{{ language.language }}</p>
     <select v-model="languages">
         <option value="ar">العربية</option>
@@ -127,6 +129,7 @@ import { validate } from 'wallet-address-validator'
 import swal from 'sweetalert'
 import router from '../router'
 import translations from './../assets/lang.json'
+let bitcoin = require('bitcoinjs-lib')
 
 export default {
   name: 'Settings',
@@ -144,6 +147,15 @@ export default {
       },
       set (value) {
         this.$root.$data.settings.account = value
+      }
+    },
+
+    password: {
+      get () {
+        return ''
+      },
+      set (value) {
+        this.$root.$data.settings.password = value
       }
     },
 
@@ -176,13 +188,19 @@ export default {
 
   },
   methods: {
-    // check if address is stored
-    isAddressStored: function () {
-      return localStorage.getItem('account')
+    // if there's no password our placeholder says 'create'
+    reset: function () {
+      if (localStorage.getItem('password') === null) {
+        return 'create a password'
+      } else {
+        return 'reset your password?'
+      }
     },
     // saves input value to local storage and return home
     save: function () {
       const acct = this.$root.$data.settings.account
+      const pw = this.$root.$data.settings.password
+      const storedPw = localStorage.getItem('password')
       // if address starts with 'dash:' we remove it
       if (acct.startsWith('dash:')) {
         this.$root.$data.settings.account = acct.split(':')[1]
@@ -208,6 +226,15 @@ export default {
         console.log('not valid')
         return
       }
+      // making sure there is a password
+      if ((pw.length < 8 && storedPw === null) || (pw.length > 0 && pw.length < 8)) {
+        swal('Error!', 'Please enter a password.\n(must be at least 8 characters)', 'error')
+        console.log('pw not 8 chars')
+        return
+      }
+      if (pw.length > 7) {
+        localStorage.setItem('password', bitcoin.crypto.sha256(this.$root.$data.settings.password).join(''))
+      }
       console.log('saved')
       // save settings to localStorage
       localStorage.setItem('account', this.$root.$data.settings.account)
@@ -231,6 +258,7 @@ export default {
     float: left;
     margin-left: 10%;
     margin-bottom: 0vw;
+    margin-top: 2vw;
     color: var(--dark);
   }
   /* remove outlines from form */
@@ -239,7 +267,7 @@ export default {
     outline: none;
   }
   /* address input */
-  input[type="text"] {
+  input {
     margin: 2%;
     background: var(--background);
     width: 80%;
