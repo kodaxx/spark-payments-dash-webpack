@@ -56,25 +56,30 @@ export default {
     },
     // check password and take us to settings page
     settings: async function () {
-      let pw = await swal({
-        title: 'Please enter your password',
-        buttons: [true, 'Ok'],
-        content: {
-          element: 'input',
-          attributes: {
-            type: 'password'
+      // for backwards compatibility (for now), we only ask for password if password exists
+      if (localStorage.getItem('password') !== null) {
+        let pw = await swal({
+          title: 'Please enter your password',
+          buttons: [true, 'Ok'],
+          content: {
+            element: 'input',
+            attributes: {
+              type: 'password'
+            }
           }
+        })
+        pw = bitcoin.crypto.sha256(pw).join('')
+        // if password matches, show settings
+        if (pw === localStorage.getItem('password')) {
+          router.push('/settings')
+          return
         }
-      })
-      pw = bitcoin.crypto.sha256(pw).join('')
-      // if password matches, show settings
-      if (pw === localStorage.getItem('password')) {
+        // if password doesn't match and one was typed, it's wrong - show user
+        if (pw !== null) {
+          swal('Error!', 'Password is incorrect', 'error')
+        }
+      } else {
         router.push('/settings')
-        return
-      }
-      // if password doesn't match and one was typed, it's wrong - show user
-      if (pw !== null) {
-        swal('Error!', 'Password is incorrect', 'error')
       }
     },
 
