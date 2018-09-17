@@ -1,7 +1,7 @@
 # Spark Payments (Web and Mobile)
 Spark Payments is a mobile-friendly payment terminal app for web and mobile that merchants can use to accept Dash payments.
 
-# Current Features
+## Current Features
 
 * Enter sale amounts in your local currency (supports 94 currencies) and have them converted to an amount in Dash
 * A QR code payment request is generated
