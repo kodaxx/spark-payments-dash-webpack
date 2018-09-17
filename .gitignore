@@ -4,9 +4,7 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-platforms/
-plugins/
-www/
+mobile/
 # Editor directories and files
 .idea
 .vscode

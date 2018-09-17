@@ -76,8 +76,8 @@ module.exports = {
 
   mobile: {
     env: require('./mobile.env'),
-	   index: path.resolve(__dirname, '../www/index.html'),
-	   assetsRoot: path.resolve(__dirname, '../www'),
+	   index: path.resolve(__dirname, '../mobile/www/index.html'),
+	   assetsRoot: path.resolve(__dirname, '../mobile/www'),
 	   assetsSubDirectory: 'static',
      assetsPublicPath: './',
      productionSourceMap: false,

@@ -10,7 +10,7 @@
     "lint": "eslint --ext .js,.vue src",
     "build": "node build/build.js",
     "build-mobile": "node build/build-mobile.js",
-    "clean": "rm -rf dist && rm -rf www"
+    "clean": "rm -rf dist && rm -rf mobile"
   },
   "dependencies": {
     "@xkeshi/vue-qrcode": "^1.0.0",
