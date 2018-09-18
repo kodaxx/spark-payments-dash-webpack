@@ -99,6 +99,8 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Barlow:300');
+
 #content {
   margin: 0 auto;
   text-align: center;
@@ -127,10 +129,10 @@ export default {
   color: var(--green);
 }
 
-@font-face {
+/* @font-face {
   font-family: Barlow;
   src: url('./assets/fonts/barlow.ttf');
-}
+} */
 
 @media (min-width: 500px) {
   #app {
@@ -150,7 +152,8 @@ export default {
 }
 
 * {
-  font-family: Barlow, 'PT Sans', sans-serif;
+  font-family: 'Barlow Semi Condensed', 'PT Sans', sans-serif;
+  font-weight: 100;
   outline: none;
 }
 
