@@ -1,0 +1,21 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.kodaxx.spark"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.kodaxx.spark"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.kodaxx.spark"
+        }
+    },
+    "dependent_plugins": {}
+}

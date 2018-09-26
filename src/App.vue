@@ -152,8 +152,8 @@ export default {
 }
 
 * {
-  font-family: 'Barlow Semi Condensed', 'PT Sans', sans-serif;
-  font-weight: 100;
+  font-family: 'Barlow Semi Condensed',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+  font-weight: 300;
   outline: none;
 }
 
