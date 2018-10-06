@@ -177,5 +177,22 @@
     "payment_received": "Platba prijatá!",
     "thanks": "Ďakujeme!",
     "done": "hotovo"
+  },
+
+  "zh-Hans": {
+    "connected": "連接 ",
+    "internet": "互連網 ",
+    "address": "Dash 地址 ",
+    "language": "語言 ",
+    "currency": "貨幣 ",
+    "format": "格式 ",
+    "save": "保存 ",
+    "charge": "收費 ",
+    "partial": "部分 ",
+    "waiting": "等待 ",
+    "cancel": "取消 ",
+    "payment_received": "付款收到 ",
+    "thanks": "謝謝 ",
+    "done": "完成 "
   }
 }

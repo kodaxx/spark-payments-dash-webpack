@@ -42,7 +42,7 @@ export default {
 
   computed: {
     price: function () {
-      if (this.$root.$data.settings.currency.match(/BYN|CLP|ISK|JPY|KRW|PYG|UGX|UYU|VND/g) !== null) {
+      if (this.$root.$data.settings.currency.match(/COP|BYN|CLP|ISK|JPY|KRW|PYG|UGX|UYU|VND/g) !== null) {
         // these currencies have no decimals
         return this.native || 0
       } else if (this.$root.$data.settings.currency.match(/BHD|KWD|OMR/g) !== null) {
@@ -72,8 +72,8 @@ export default {
         return
       }
       // subscribe to tx events
-      this.$socket.emit('subscribe', 'inv')
-      console.log('listening')
+      // this.$socket.emit('subscribe', 'inv')
+      // console.log('listening')
       // show QR page and pass data
       router.push(`/sale/${this.price}`)
     }

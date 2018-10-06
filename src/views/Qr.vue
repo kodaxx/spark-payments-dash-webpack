@@ -101,6 +101,9 @@ export default {
   },
 
   async created () {
+    // listen for transaction
+    this.$socket.emit('subscribe', 'inv')
+    console.log('listening')
     // set the amount
     this.amount = `${this.$route.params.amount} ${this.$root.$data.settings.currency}`
     // get current price
