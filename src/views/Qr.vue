@@ -107,7 +107,7 @@ export default {
     // set the amount
     this.amount = `${this.$route.params.amount} ${this.$root.$data.settings.currency}`
     // get current price
-    this.price.dash = `${(parseFloat(this.amount) / parseFloat(await spark.getExchangeRate('DASH', this.$root.$data.settings.currency))).toFixed(8)} DASH`
+    this.price.dash = `${(parseFloat(this.amount) / parseFloat(await spark.getExchangeRate(this.$root.$data.settings.currency))).toFixed(8)} DASH`
     // set pice in mdash
     this.price.mdash = `${(parseFloat(this.price.dash) * 1000).toFixed(5)} mDash`
     // get address
