@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.kodaxx.spark" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.kodaxx.spark" version="1.0.1">
 	<name>Spark Payments</name>
 	<description>An external terminal for processing DASH transactions in brick and mortar stores</description>
 	<author href="http://kodaxx.github.io" email="kodaxx@gmail.com">kodaxx</author>
