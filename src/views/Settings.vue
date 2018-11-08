@@ -8,7 +8,7 @@
     <p>{{ language.address }}</p>
     <div id="wrap">
       <input id="address" v-model='address' type='text' class='input settings' value=''>
-      <button id="scan" @click="camera = true">[-]</button>
+      <button id="scan" @click.prevent="camera = true">[-]</button>
     </div>
     <!-- <input v-model='address' type='text' class='input settings' value=''> -->
     <p>{{ language.password }}</p>
