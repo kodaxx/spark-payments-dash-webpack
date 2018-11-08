@@ -205,13 +205,20 @@ export default {
 
   },
   methods: {
-    // start
+    // when the camera decodes a QR code, it runs this function
     onDecode: function (data) {
-      this.address = data
+      let acct = data
+      // if address starts with 'dash:' we remove it
+      if (acct.startsWith('dash:')) {
+        acct = acct.split(':')[1]
+      }
+      if (data.includes('?')) {
+        acct = acct.split('?')[0]
+      }
+      this.address = acct
       this.camera = false
       console.log(data)
     },
-    // end
     // if there's no password our placeholder says 'create'
     reset: function () {
       if (localStorage.getItem('password') === null) {
