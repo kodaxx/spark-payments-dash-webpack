@@ -1,7 +1,16 @@
 <template>
-  <form autocomplete='off'>
+  <div>
+    <div v-if="camera">
+      <qrcode-reader @decode="onDecode"></qrcode-reader>
+      <button style="background: var(--red); border: 1px solid var(--red);" @click="camera = false">{{ language.cancel }}</button>
+    </div>
+  <form v-if="!camera" autocomplete='off'>
     <p>{{ language.address }}</p>
-    <input v-model='address' type='text' class='input settings' value=''>
+    <div id="wrap">
+      <input id="address" v-model='address' type='text' class='input settings' value=''>
+      <button id="scan" @click="camera = true">[-]</button>
+    </div>
+    <!-- <input v-model='address' type='text' class='input settings' value=''> -->
     <p>{{ language.password }}</p>
     <input v-model='password' type='password' class='input settings' value ='' :placeholder='reset()'>
     <p>{{ language.language }}</p>
@@ -111,7 +120,6 @@
         <option value="UGX">UGX - Ugandan Shilling</option>
         <option value="USD">USD - United States Dollar</option>
         <option value="UYU">UYU - Uruguayan Peso</option>
-        <option value="VES">VES - Venezuelan Bolivar Soberano</option>
         <option value="VEF">VEF - Venezuelan Bolivar Fuerte</option>
         <option value="VND">VND - Vietnamese Dong</option>
         <option value="YER">YER - Yemeni Rial</option>
@@ -124,6 +132,7 @@
     </select>
     <button @click.prevent="save" class="regular">{{ language.save }}</button>
   </form>
+</div>
 </template>
 
 <script>
@@ -131,6 +140,11 @@ import { validate } from 'wallet-address-validator'
 import swal from 'sweetalert'
 import router from '../router'
 import translations from './../assets/lang.json'
+import Vue from 'vue'
+import VueQrcodeReader from 'vue-qrcode-reader'
+
+Vue.use(VueQrcodeReader)
+
 let bitcoin = require('bitcoinjs-lib')
 
 export default {
@@ -138,7 +152,8 @@ export default {
 
   data () {
     return {
-      language: ''
+      language: '',
+      camera: false
     }
   },
 
@@ -190,6 +205,13 @@ export default {
 
   },
   methods: {
+    // start
+    onDecode: function (data) {
+      this.address = data
+      this.camera = false
+      console.log(data)
+    },
+    // end
     // if there's no password our placeholder says 'create'
     reset: function () {
       if (localStorage.getItem('password') === null) {
@@ -200,13 +222,13 @@ export default {
     },
     // saves input value to local storage and return home
     save: function () {
-      const acct = this.$root.$data.settings.account
+      let acct = this.$root.$data.settings.account
       const pw = this.$root.$data.settings.password
       const storedPw = localStorage.getItem('password')
       // if address starts with 'dash:' we remove it
       if (acct.startsWith('dash:')) {
         this.$root.$data.settings.account = acct.split(':')[1]
-        return
+        acct = this.$root.$data.settings.account
       }
       // validating the address form input
       if (acct.startsWith('y')) {
@@ -256,6 +278,30 @@ export default {
 </script>
 
 <style scoped>
+  #wrap {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+  }
+
+  #address {
+    padding-right: 12%;
+    width: 70%
+  }
+
+  #scan {
+    position: absolute;
+    top: 19px;
+    right: 9.5%;
+    font-size: 1.2em;
+    margin: 0;
+    width: 35px;
+    height: 30px;
+    border: none;
+    background: none;
+    color: grey;
+  }
+
   p {
     float: left;
     margin-left: 10%;
