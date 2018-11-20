@@ -9,7 +9,13 @@
     <div>
       <span>{{ amount }}</span>
       <p id="price">~ {{ unitPrice }}</p>
-      <qrcode :value="uri" :options="{ size: 256, backgroundAlpha: 0, foregroundAlpha: 0.8, level: 'H', padding: 15 }" :tag="'img'"></qrcode>
+      <qrcode v-show="qr" @click.native="test()" :value="uri" :options="{ size: 256, backgroundAlpha: 0, foregroundAlpha: 0.8, level: 'H', padding: 15 }" :tag="'img'"></qrcode>
+      <div v-show="!qr" id="cointext" @click="test()">
+        <div id="content">
+          <img id="cointext-logo" src='../assets/img/cointext.png'>
+          <p id="invoice">"BUY 1FG4"</p>
+        </div>
+      </div>
       <p v-show="this.tx.received > 0">{{ language.partial }}: {{ partial }} {{ this.$root.$data.settings.format }}</p>
       <p v-show="this.tx.received == 0">{{ language.waiting }}</p>
       <br>
@@ -37,6 +43,7 @@ export default {
   data () {
     return {
       loading: true,
+      qr: true,
       loaderClasses: '',
       amount: '',
       address: '',
@@ -54,6 +61,10 @@ export default {
   },
 
   methods: {
+    test: function () {
+      this.qr = !this.qr
+    },
+
     cancel: function () {
       // return home
       router.go(-1)
@@ -178,6 +189,32 @@ export default {
     text-align: center;
     color: var(--secondary);
     font-size: 30px;
+  }
+
+  #cointext {
+    position: relative;
+    width: 79.8%;
+    margin: 0 auto;
+  }
+
+  #cointext:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  #content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  #cointext-logo {
+    margin-top: 30px;
+  }
+
+  #invoice {
+    margin-top: 50px;
   }
 
   #price {
