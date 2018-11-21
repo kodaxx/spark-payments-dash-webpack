@@ -130,7 +130,7 @@ export default {
     // set dash amount in duffs
     let duffs = Math.round(parseFloat(this.price.dash) * 100000000)
     // set url for cointext
-    let url = `http://api.get-spark.com/invoice?addr=${this.address}&amount=${duffs}`
+    let url = `https://api.get-spark.com/invoice?addr=${this.address}&amount=${duffs}`
     // get invoice number from cointext
     // http://localhost:3000/cointext?addr=XguWWTJUciSsADfHBqHynqF6vwyM2rWib4&amount=22500
     console.log(url)
