@@ -13,7 +13,7 @@
       <div v-show="!qr" id="cointext" @click="test()">
         <div id="content">
           <img id="cointext-logo" src='../assets/img/cointext.png'>
-          <p id="invoice">"BUY 1FG4"</p>
+          <p id="invoice">{{ this.invoice }}</p>
         </div>
       </div>
       <p v-show="this.tx.received > 0">{{ language.partial }}: {{ partial }} {{ this.$root.$data.settings.format }}</p>
@@ -26,6 +26,7 @@
 
 <script>
 import * as spark from './../assets/js/helpers'
+import axios from 'axios'
 import VueQrcode from '@xkeshi/vue-qrcode'
 import router from '../router'
 import { HalfCircleSpinner, HollowDotsSpinner } from 'epic-spinners'
@@ -48,6 +49,7 @@ export default {
       amount: '',
       address: '',
       uri: '',
+      invoice: '',
       price: {
         mdash: '0',
         dash: '0'
@@ -125,6 +127,23 @@ export default {
     this.address = await spark.getAddress(this.$root.$data.settings.account)
     // set uri for qr code
     this.uri = `dash:${this.address}?amount=${parseFloat(this.price.dash)}&is=1`
+    // set dash amount in duffs
+    let duffs = Math.round(parseFloat(this.price.dash) * 100000000)
+    // set url for cointext
+    let url = `http://localhost:3000/invoice?addr=${this.address}&amount=${duffs}`
+    // get invoice number from cointext
+    // http://localhost:3000/cointext?addr=XguWWTJUciSsADfHBqHynqF6vwyM2rWib4&amount=22500
+    console.log(url)
+    let vm = this
+
+    axios.get(url)
+      .then(result => {
+        vm.invoice = `"BUY ${result.data}"`
+        console.log(result.data)
+      })
+      .catch(error => {
+        console.log(`Error: ${error}`)
+      })
     // loading is done
     this.loading = false
     this.loaderClasses = 'fade-out'
