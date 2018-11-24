@@ -12,7 +12,7 @@
     </div>
     <!-- <input v-model='address' type='text' class='input settings' value=''> -->
     <p>{{ language.password }}</p>
-    <input v-model='password' type='password' class='input settings' value ='' :placeholder='reset()'>
+    <input v-model='password' type='password' class='input settings' value ='' :placeholder='pw'>
     <p>{{ language.language }}</p>
     <select v-model="languages">
         <option value="ar">العربية</option>
@@ -153,6 +153,7 @@ export default {
   data () {
     return {
       language: '',
+      pw: '',
       camera: false
     }
   },
@@ -221,11 +222,17 @@ export default {
     },
     // if there's no password our placeholder says 'create'
     reset: function () {
-      if (localStorage.getItem('password') === null) {
-        return 'create a password'
-      } else {
-        return 'reset your password?'
-      }
+      // console.log('reset function ran')
+      // if (this.language !== '') {
+      //   console.log('lang !==')
+      //   if (localStorage.getItem('password') === null) {
+      //     console.log('returning create')
+      //     this.pw = this.language.errors.create
+      //   } else {
+      //     console.log('returning reset')
+      //     this.pw = this.language.errors.reset
+      //   }
+      // }
     },
     // saves input value to local storage and return home
     save: function () {
@@ -240,26 +247,26 @@ export default {
       // validating the address form input
       if (acct.startsWith('y')) {
         if (!validate(acct, 'dash', 'testnet')) {
-          swal('Error!', 'Please enter a valid Dash address.', 'error')
+          swal('Error!', this.language.errors.address, 'error')
           console.log('not valid')
           return
         }
       } else if (acct.startsWith('X')) {
         if (!validate(acct, 'dash')) {
-          swal('Error!', 'Please enter a valid Dash address.', 'error')
+          swal('Error!', this.language.errors.address, 'error')
           console.log('not valid')
           return
         }
       } else if (acct.startsWith('xpub')) {
         console.log('xpub, nice dude.')
       } else {
-        swal('Error!', 'Please enter a valid Dash address.', 'error')
+        swal('Error!', this.language.errors.address, 'error')
         console.log('not valid')
         return
       }
       // making sure there is a password
       if ((pw.length < 8 && storedPw === null) || (pw.length > 0 && pw.length < 8)) {
-        swal('Error!', 'Please enter a password.\n(must be at least 8 characters)', 'error')
+        swal('Error!', this.language.errors.password, 'error')
         console.log('pw not 8 chars')
         return
       }
@@ -280,6 +287,9 @@ export default {
 
   mounted () {
     this.language = translations[this.$root.$data.settings.language]
+    if (this.language !== '') {
+      !localStorage.getItem('password') ? this.pw = this.language.errors.create : this.pw = this.language.errors.reset
+    }
   }
 }
 </script>

@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import translations from './assets/lang.json'
 import router from './router'
 import swal from 'sweetalert'
 let bitcoin = require('bitcoinjs-lib')
@@ -23,7 +24,8 @@ export default {
 
   data () {
     return {
-      connected: false
+      connected: false,
+      language: ''
     }
   },
 
@@ -39,14 +41,6 @@ export default {
       router.push('/connection')
       this.connected = false
     }
-
-    // ping: function () {
-    //   console.log('ping')
-    // },
-    //
-    // pong: function (num) {
-    //   console.log('pong: ' + num)
-    // }
   },
 
   methods: {
@@ -59,7 +53,7 @@ export default {
       // for backwards compatibility (for now), we only ask for password if password exists
       if (localStorage.getItem('password') !== null) {
         let pw = await swal({
-          title: 'Please enter your password',
+          title: this.language.errors.enter,
           buttons: [true, 'Ok'],
           content: {
             element: 'input',
@@ -76,7 +70,7 @@ export default {
         }
         // if password doesn't match and one was typed, it's wrong - show user
         if (pw !== null) {
-          swal('Error!', 'Password is incorrect', 'error')
+          swal('Error!', this.language.errors.wrong, 'error')
         }
       } else {
         router.push('/settings')
@@ -88,11 +82,22 @@ export default {
     }
 
   },
-  // when component is created, we double check that we are connected
+  // when component is created
   created () {
+    // try to detect and set language automatically
+    const lang = navigator.language.split('-')[0]
+    if (!localStorage.getItem('language')) {
+      localStorage.setItem('language', lang)
+      this.$root.$data.settings.language = lang
+    }
+    // double check that we are connected
     if (!this.connected) {
       router.push('/connection')
     }
+  },
+
+  mounted () {
+    this.language = translations[this.$root.$data.settings.language]
   }
 
 }

@@ -20,7 +20,7 @@ new Vue({
       account: localStorage.getItem('account') || '',
       password: '',
       language: localStorage.getItem('language') || 'en',
-      currency: localStorage.getItem('currency') || 'USD',
+      currency: localStorage.getItem('currency') || 'COP',
       format: localStorage.getItem('format') || 'dash'
     }
   },

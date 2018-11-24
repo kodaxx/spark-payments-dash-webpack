@@ -14,7 +14,16 @@
     "cancel": "إلغاء",
     "payment_received": "تم إستلام الدفع",
     "thanks": "شكرا لك!",
-    "done": "تم الأمر"
+    "done": "تم الأمر",
+    "errors": {
+      "enter": "Please enter your password",
+      "wrong": "Password is incorrect",
+      "address": "Please enter a valid Dash address.",
+      "password": "Please enter a password.\n(must be at least 8 characters)",
+      "create": "create a password",
+      "reset": "reset your password?",
+      "price": "Price cannot be blank. Please enter an amount."
+    }
   },
 
   "de": {
@@ -32,7 +41,16 @@
     "cancel": "abbrechen",
     "payment_received": "Zahlung erhalten!",
     "thanks": "Vielen Dank!",
-    "done": "abgeschlossen"
+    "done": "abgeschlossen",
+    "errors": {
+      "enter": "Please enter your password",
+      "wrong": "Password is incorrect",
+      "address": "Please enter a valid Dash address.",
+      "password": "Please enter a password.\n(must be at least 8 characters)",
+      "create": "create a password",
+      "reset": "reset your password?",
+      "price": "Price cannot be blank. Please enter an amount."
+    }
   },
 
   "en": {
@@ -50,14 +68,23 @@
     "cancel": "cancel",
     "payment_received": "Payment Received!",
     "thanks": "Thank you!",
-    "done": "done"
+    "done": "done",
+    "errors": {
+      "enter": "Please enter your password",
+      "wrong": "Password is incorrect",
+      "address": "Please enter a valid Dash address.",
+      "password": "Please enter a password.\n(must be at least 8 characters)",
+      "create": "create a password",
+      "reset": "reset your password?",
+      "price": "Price cannot be blank. Please enter an amount."
+    }
   },
 
   "es": {
     "connected": "no conectado",
     "internet": "por favor revisa tu internet",
     "address": "dirección de dash",
-    "password": "password",
+    "password": "clave",
     "language": "idioma",
     "currency": "moneda local",
     "format": "formato predeterminado de dash",
@@ -68,7 +95,16 @@
     "cancel": "cancelar",
     "payment_received": "¡Pago Recibido!",
     "thanks": "¡Gracias!",
-    "done": "hecho"
+    "done": "hecho",
+    "errors": {
+      "enter": "Favor ingresar tu clave",
+      "wrong": "Clave incorrecta",
+      "address": "Favor ingresar una dirección de Dash válida.",
+      "password": "Favor ingresar una clave.\n(debe ser al menos 8 caracteres)",
+      "create": "crear una clave",
+      "reset": "restablecer tu clave?",
+      "price": "El precio no puede estar en blanco. Favor ingresar una cantidad."
+    }
   },
 
   "fr": {
@@ -86,7 +122,16 @@
     "cancel": "annuler",
     "payment_received": "Paiement reçu !",
     "thanks": "Merci !",
-    "done": "terminé"
+    "done": "terminé",
+    "errors": {
+      "enter": "Please enter your password",
+      "wrong": "Password is incorrect",
+      "address": "Please enter a valid Dash address.",
+      "password": "Please enter a password.\n(must be at least 8 characters)",
+      "create": "create a password",
+      "reset": "reset your password?",
+      "price": "Price cannot be blank. Please enter an amount."
+    }
   },
 
   "it": {
@@ -104,7 +149,16 @@
     "cancel": "cancellare",
     "payment_received": "Pagamento Ricevuto!",
     "thanks": "Grazie!",
-    "done": "fatto"
+    "done": "fatto",
+    "errors": {
+      "enter": "Please enter your password",
+      "wrong": "Password is incorrect",
+      "address": "Please enter a valid Dash address.",
+      "password": "Please enter a password.\n(must be at least 8 characters)",
+      "create": "create a password",
+      "reset": "reset your password?",
+      "price": "Price cannot be blank. Please enter an amount."
+    }
   },
 
   "nl": {
@@ -122,7 +176,16 @@
       "cancel": "annuleren",
       "payment_received": "Betaling ontvangen!",
       "thanks": "Bedankt!",
-      "done": "voltooid"
+      "done": "voltooid",
+      "errors": {
+        "enter": "Please enter your password",
+        "wrong": "Password is incorrect",
+        "address": "Please enter a valid Dash address.",
+        "password": "Please enter a password.\n(must be at least 8 characters)",
+        "create": "create a password",
+        "reset": "reset your password?",
+        "price": "Price cannot be blank. Please enter an amount."
+      }
     },
 
   "pl": {
@@ -140,7 +203,16 @@
     "cancel": "anuluj",
     "payment_received": "Płatność otrzymana!",
     "thanks": "Dziękuję",
-    "done": "zrobione"
+    "done": "zrobione",
+    "errors": {
+      "enter": "Please enter your password",
+      "wrong": "Password is incorrect",
+      "address": "Please enter a valid Dash address.",
+      "password": "Please enter a password.\n(must be at least 8 characters)",
+      "create": "create a password",
+      "reset": "reset your password?",
+      "price": "Price cannot be blank. Please enter an amount."
+    }
   },
 
   "pt-br": {
@@ -158,7 +230,16 @@
       "cancel": "cancelar",
       "payment_received": "Pagamento recebido!",
       "thanks": "Obrigado!",
-      "done": "concluído"
+      "done": "concluído",
+      "errors": {
+        "enter": "Please enter your password",
+        "wrong": "Password is incorrect",
+        "address": "Please enter a valid Dash address.",
+        "password": "Please enter a password.\n(must be at least 8 characters)",
+        "create": "create a password",
+        "reset": "reset your password?",
+        "price": "Price cannot be blank. Please enter an amount."
+      }
     },
 
   "sk": {
@@ -176,7 +257,16 @@
     "cancel": "zrušiť",
     "payment_received": "Platba prijatá!",
     "thanks": "Ďakujeme!",
-    "done": "hotovo"
+    "done": "hotovo",
+    "errors": {
+      "enter": "Please enter your password",
+      "wrong": "Password is incorrect",
+      "address": "Please enter a valid Dash address.",
+      "password": "Please enter a password.\n(must be at least 8 characters)",
+      "create": "create a password",
+      "reset": "reset your password?",
+      "price": "Price cannot be blank. Please enter an amount."
+    }
   },
 
   "zh-Hans": {
@@ -193,6 +283,15 @@
     "cancel": "取消 ",
     "payment_received": "付款收到 ",
     "thanks": "謝謝 ",
-    "done": "完成 "
+    "done": "完成 ",
+    "errors": {
+      "enter": "Please enter your password",
+      "wrong": "Password is incorrect",
+      "address": "Please enter a valid Dash address.",
+      "password": "Please enter a password.\n(must be at least 8 characters)",
+      "create": "create a password",
+      "reset": "reset your password?",
+      "price": "Price cannot be blank. Please enter an amount."
+    }
   }
 }

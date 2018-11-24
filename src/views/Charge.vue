@@ -68,7 +68,7 @@ export default {
     purchase: function () {
       // if amount is empty, notify merchant and stop function
       if (this.native === '' || this.native === 0) { // string vs int?
-        swal('Error!', 'Price cannot be blank. Please enter an amount.', 'error')
+        swal('Error!', this.language.errors.price, 'error')
         return
       }
       // show QR page and pass data
