@@ -120,7 +120,7 @@
         <option value="UGX">UGX - Ugandan Shilling</option>
         <option value="USD">USD - United States Dollar</option>
         <option value="UYU">UYU - Uruguayan Peso</option>
-        <option value="VEF">VEF - Venezuelan Bolivar Fuerte</option>
+        <option value="VES">VES - Venezuelan Bolívar Soberano</option>
         <option value="VND">VND - Vietnamese Dong</option>
         <option value="YER">YER - Yemeni Rial</option>
         <option value="ZAR">ZAR - South African Rand</option>

@@ -71,9 +71,6 @@ export default {
         swal('Error!', 'Price cannot be blank. Please enter an amount.', 'error')
         return
       }
-      // subscribe to tx events
-      // this.$socket.emit('subscribe', 'inv')
-      // console.log('listening')
       // show QR page and pass data
       router.push(`/sale/${this.price}`)
     }

@@ -16,7 +16,7 @@ export function getExchangeRate (currency) {
     ajax(`https://api.get-spark.com/${currency}`)
       .then(function (result) {
         console.log(`exchange rate: ${result[currency]}`)
-        resolve(result[currency])
+        resolve(parseFloat(result[currency]))
       })
       .catch(function (e) {
         console.log(`error: ${e}`)

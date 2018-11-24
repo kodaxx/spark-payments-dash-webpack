@@ -132,7 +132,6 @@ export default {
     // set url for cointext
     let url = `https://api.get-spark.com/invoice?addr=${this.address}&amount=${duffs}`
     // get invoice number from cointext
-    // http://localhost:3000/cointext?addr=XguWWTJUciSsADfHBqHynqF6vwyM2rWib4&amount=22500
     console.log(url)
     let vm = this
 
