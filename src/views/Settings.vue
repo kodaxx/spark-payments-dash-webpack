@@ -258,6 +258,8 @@ export default {
           return
         }
       } else if (acct.startsWith('xpub')) {
+        this.$root.$data.settings.account = acct.split('?')[0]
+        acct = this.$root.$data.settings.account
         console.log('xpub, nice dude.')
       } else {
         swal('Error!', this.language.errors.address, 'error')
