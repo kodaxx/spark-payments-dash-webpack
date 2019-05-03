@@ -91,10 +91,14 @@ export default {
           vm.tx.received = amount[0] / 100000000
           vm.tx.locked = data.txlock
           let status = vm.tx.locked ? '1' : '0'
+          // we figure out if the cointext screen is showing when we receive funds - for analytics
+          let ct = !vm.qr
           console.log(`incoming: ${vm.tx.received} to ${address[0]}`)
           console.log(`instantsend: ${vm.tx.locked}`)
           // if the amount is what we're looking for (or more), show confirmed screen
           if (vm.tx.received >= parseFloat(vm.price.dash)) {
+            // customer completes transaction - we send value, IS status, local currency, qr or cointext - for analytics
+            mixpanel.track('TX', {price: parseFloat(vm.price.dash), is: status, currency: vm.$root.$data.settings.currency, cointext: ct})
             router.replace(`/sale/confirmed/${status}`)
           }
         }
