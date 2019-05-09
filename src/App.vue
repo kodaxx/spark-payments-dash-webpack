@@ -3,7 +3,7 @@
   <span v-if='this.$route.path === "/"' @click="settings()" id="menu">☰</span>
   <span v-if='this.$route.path === "/settings" && isStored()' @click="cancel()" id="menu">✕</span>
   <img class='logo' src='./assets/img/logo.png'>
-  <span v-if='connected' id="status" class="green">•</span>
+  <span v-if='connected === true' id="status" class="green">•</span>
   <span v-else id="status" class="red">•</span>
   <div id="content">
     <transition name="fade">
@@ -24,7 +24,7 @@ export default {
 
   data () {
     return {
-      connected: false,
+      connected: null,
       language: ''
     }
   },
@@ -79,6 +79,21 @@ export default {
 
     cancel: function () {
       router.replace('/')
+    },
+
+    play: function () {
+      // ka-fucking-ching!
+      let audio = new Audio(require('./assets/kaching.mp3'))
+      let audioPromise = audio.play()
+
+      if (audioPromise !== undefined) {
+        audioPromise.then(_ => {
+          // autoplay started!
+        }).catch(error => {
+          // autoplay was prevented
+          console.log(error)
+        })
+      }
     }
 
   },
@@ -90,14 +105,15 @@ export default {
       localStorage.setItem('language', lang)
       this.$root.$data.settings.language = lang
     }
-    // double check that we are connected
-    if (!this.connected) {
-      router.push('/connection')
-    }
   },
 
   mounted () {
     this.language = translations[this.$root.$data.settings.language]
+
+    // double check that we are connected
+    if (this.connected === false) {
+      router.push('/connection')
+    }
   }
 
 }

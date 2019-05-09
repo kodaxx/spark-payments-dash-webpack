@@ -251,6 +251,7 @@ export default {
           console.log('not valid')
           return
         }
+        swal('Warning!', this.language.errors.warning, 'error')
       } else if (acct.startsWith('X')) {
         if (!validate(acct, 'dash')) {
           swal('Error!', this.language.errors.address, 'error')

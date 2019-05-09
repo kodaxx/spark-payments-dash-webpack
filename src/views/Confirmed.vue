@@ -10,7 +10,7 @@
     <br>
     <p>{{ language.thanks }}</p>
     <br>
-    <button @click="done">{{ language.done }}</button>
+    <button v-if="!this.$route.query.platform === 'web'" @click="done">{{ language.done }}</button>
   </div>
 </template>
 
@@ -48,9 +48,7 @@ export default {
   },
 
   mounted () {
-    // ka-fucking-ching!
-    let audio = new Audio(require('../assets/kaching.mp3'))
-    audio.play()
+    this.$parent.play()
     // set language
     this.language = translations[this.$root.$data.settings.language]
   }

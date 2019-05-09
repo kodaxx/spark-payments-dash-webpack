@@ -19,7 +19,7 @@
       <p v-show="this.tx.received > 0">{{ language.partial }}: {{ partial }} {{ this.$root.$data.settings.format }}</p>
       <p v-show="this.tx.received == 0">{{ language.waiting }}</p>
       <br>
-      <button @click="cancel" class="cancel">{{ language.cancel }}</button>
+      <button v-if="!this.$route.query.address" @click="cancel" class="cancel">{{ language.cancel }}</button>
     </div>
   </div>
 </template>
@@ -93,13 +93,18 @@ export default {
           let status = vm.tx.locked ? '1' : '0'
           // we figure out if the cointext screen is showing when we receive funds - for analytics
           let ct = !vm.qr
+          // let method = vm.qr ? 'qr' : 'cointext'
           console.log(`incoming: ${vm.tx.received} to ${address[0]}`)
           console.log(`instantsend: ${vm.tx.locked}`)
           // if the amount is what we're looking for (or more), show confirmed screen
           if (vm.tx.received >= parseFloat(vm.price.dash)) {
             // customer completes transaction - we send value, IS status, local currency, qr or cointext - for analytics
             mixpanel.track('TX', {price: parseFloat(vm.price.dash), is: status, currency: vm.$root.$data.settings.currency, cointext: ct})
-            router.replace(`/sale/confirmed/${status}`)
+            if (vm.$route.query.address) {
+              router.replace(`/sale/confirmed/${status}?platform=web`)
+            } else {
+              router.replace(`/sale/confirmed/${status}`)
+            }
           }
         }
       })
@@ -122,13 +127,15 @@ export default {
     this.$socket.emit('subscribe', 'inv')
     console.log('listening')
     // set the amount
-    this.amount = `${this.$route.params.amount} ${this.$root.$data.settings.currency}`
+    this.amount = this.$route.params.amount
     // get current price
-    this.price.dash = `${(parseFloat(this.amount) / parseFloat(await spark.getExchangeRate(this.$root.$data.settings.currency))).toFixed(8)} DASH`
+    this.price.dash = `${(parseFloat(this.amount) / parseFloat(await spark.getExchangeRate(this.amount.split(' ')[1]))).toFixed(8)} DASH`
+    console.log(this.price.dash)
     // set pice in mdash
     this.price.mdash = `${(parseFloat(this.price.dash) * 1000).toFixed(5)} mDash`
     // get address
-    this.address = await spark.getAddress(this.$root.$data.settings.account)
+    this.address = this.$route.query.address || await spark.getAddress(this.$root.$data.settings.account)
+    console.log(this.address)
     // set uri for qr code
     this.uri = `dash:${this.address}?amount=${parseFloat(this.price.dash)}&is=1`
     // set dash amount in duffs

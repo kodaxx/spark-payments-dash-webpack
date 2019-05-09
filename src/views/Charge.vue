@@ -72,7 +72,7 @@ export default {
         return
       }
       // show QR page and pass data
-      router.push(`/sale/${this.price}`)
+      router.push(`/sale/${this.price}%20${this.$root.$data.settings.currency}`)
     }
   },
 
