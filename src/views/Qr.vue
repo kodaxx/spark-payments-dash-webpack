@@ -107,7 +107,7 @@ export default {
                 event: 'GAEvent',
                 eventCategory: 'Transaction',
                 eventAction: 'Completed',
-                eventLabel: `${vm.address},${data.txid},${status},${currency},${ct}`,
+                eventLabel: `${vm.address},${data.txid},${status},${vm.$root.$data.settings.currency},${ct}`,
                 eventValue: duffs
               })
             } else {
@@ -116,7 +116,7 @@ export default {
                 event: 'GAEvent',
                 eventCategory: 'Transaction',
                 eventAction: 'Completed',
-                eventLabel: `${vm.address},${data.txid},${status},${currency},${ct}`,
+                eventLabel: `${vm.address},${data.txid},${status},${vm.$root.$data.settings.currency},${ct}`,
                 eventValue: duffs
               })
             }
