@@ -91,6 +91,7 @@ export default {
           vm.tx.received = amount[0] / 100000000
           vm.tx.locked = data.txlock
           let status = vm.tx.locked ? '1' : '0'
+          let duffs = Math.round(parseFloat(vm.price.dash) * 100000000)
           // we figure out if the cointext screen is showing when we receive funds - for analytics
           let ct = !vm.qr
           // let method = vm.qr ? 'qr' : 'cointext'
@@ -102,8 +103,22 @@ export default {
             mixpanel.track('TX', {price: parseFloat(vm.price.dash), is: status, currency: vm.$root.$data.settings.currency, cointext: ct})
             if (vm.$route.query.address) {
               router.replace(`/sale/confirmed/${status}?platform=web`)
+              window.dataLayer.push({
+                event: 'GAEvent',
+                eventCategory: 'Transaction',
+                eventAction: 'Completed',
+                eventLabel: `${vm.address},${data.txid},${status},${currency},${ct}`,
+                eventValue: duffs
+              })
             } else {
               router.replace(`/sale/confirmed/${status}`)
+              window.dataLayer.push({
+                event: 'GAEvent',
+                eventCategory: 'Transaction',
+                eventAction: 'Completed',
+                eventLabel: `${vm.address},${data.txid},${status},${currency},${ct}`,
+                eventValue: duffs
+              })
             }
           }
         }
@@ -140,6 +155,14 @@ export default {
     this.uri = `dash:${this.address}?amount=${parseFloat(this.price.dash)}&is=1`
     // set dash amount in duffs
     let duffs = Math.round(parseFloat(this.price.dash) * 100000000)
+    // push data to analytics
+    window.dataLayer.push({
+      event: 'GAEvent',
+      eventCategory: 'Transaction',
+      eventAction: 'Initiated',
+      eventLabel: this.address,
+      eventValue: duffs
+    })
     // set url for cointext
     let url = `https://api.get-spark.com/invoice?addr=${this.address}&amount=${duffs}`
     // get invoice number from cointext
