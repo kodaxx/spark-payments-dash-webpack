@@ -91,6 +91,7 @@ export default {
           vm.tx.received = amount[0] / 100000000
           vm.tx.locked = data.txlock
           let status = vm.tx.locked ? '1' : '0'
+          let is = status === '1' ? true : false
           let duffs = Math.round(parseFloat(vm.price.dash) * 100000000)
           // we figure out if the cointext screen is showing when we receive funds - for analytics
           let ct = !vm.qr

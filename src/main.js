@@ -33,10 +33,6 @@ new Vue({
     window.addEventListener('online', function () {
       router.push('/')
     })
-    // if there's no account saved, show settings page
-    if (!localStorage.getItem('account')) {
-      router.push('/settings')
-    }
   },
   router,
   components: { App },

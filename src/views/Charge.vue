@@ -78,6 +78,13 @@ export default {
 
   mounted () {
     this.language = translations[this.$root.$data.settings.language]
+  },
+
+  created () {
+    // if there's no account saved, show settings page
+    if (!localStorage.getItem('account')) {
+      router.push('/settings')
+    }
   }
 
 }
