@@ -15,7 +15,7 @@
     "payment_received": "تم إستلام الدفع",
     "thanks": "شكرا لك!",
     "done": "تم الأمر",
-    "close": "close",
+    "pay": "pay",
     "errors": {
       "enter": "Please enter your password",
       "wrong": "Password is incorrect",
@@ -44,7 +44,7 @@
     "payment_received": "Zahlung erhalten!",
     "thanks": "Vielen Dank!",
     "done": "abgeschlossen",
-    "close": "close",
+    "pay": "pay",
     "errors": {
       "enter": "Please enter your password",
       "wrong": "Password is incorrect",
@@ -73,7 +73,7 @@
     "payment_received": "Payment Received!",
     "thanks": "Thank you!",
     "done": "done",
-    "close": "close",
+    "pay": "pay",
     "errors": {
       "enter": "Please enter your password",
       "wrong": "Password is incorrect",
@@ -102,7 +102,7 @@
     "payment_received": "¡Pago Recibido!",
     "thanks": "¡Gracias!",
     "done": "hecho",
-    "close": "close",
+    "pay": "pay",
     "errors": {
       "enter": "Favor ingresar tu clave",
       "wrong": "Clave incorrecta",
@@ -131,7 +131,7 @@
     "payment_received": "Paiement reçu !",
     "thanks": "Merci !",
     "done": "terminé",
-    "close": "close",
+    "pay": "pay",
     "errors": {
       "enter": "Please enter your password",
       "wrong": "Password is incorrect",
@@ -160,7 +160,7 @@
     "payment_received": "Pagamento Ricevuto!",
     "thanks": "Grazie!",
     "done": "fatto",
-    "close": "close",
+    "pay": "pay",
     "errors": {
       "enter": "Please enter your password",
       "wrong": "Password is incorrect",
@@ -189,7 +189,7 @@
       "payment_received": "Betaling ontvangen!",
       "thanks": "Bedankt!",
       "done": "voltooid",
-      "close": "close",
+      "pay": "pay",
       "errors": {
         "enter": "Please enter your password",
         "wrong": "Password is incorrect",
@@ -218,7 +218,7 @@
     "payment_received": "Płatność otrzymana!",
     "thanks": "Dziękuję",
     "done": "zrobione",
-    "close": "close",
+    "pay": "pay",
     "errors": {
       "enter": "Please enter your password",
       "wrong": "Password is incorrect",
@@ -247,7 +247,7 @@
       "payment_received": "Pagamento recebido!",
       "thanks": "Obrigado!",
       "done": "concluído",
-      "close": "close",
+      "pay": "pay",
       "errors": {
         "enter": "Please enter your password",
         "wrong": "Password is incorrect",
@@ -276,7 +276,7 @@
     "payment_received": "Platba prijatá!",
     "thanks": "Ďakujeme!",
     "done": "hotovo",
-    "close": "close",
+    "pay": "pay",
     "errors": {
       "enter": "Please enter your password",
       "wrong": "Password is incorrect",
@@ -304,7 +304,7 @@
     "payment_received": "付款收到 ",
     "thanks": "謝謝 ",
     "done": "完成 ",
-    "close": "close",
+    "pay": "pay",
     "errors": {
       "enter": "Please enter your password",
       "wrong": "Password is incorrect",

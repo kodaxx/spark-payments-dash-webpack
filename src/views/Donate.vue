@@ -1,6 +1,6 @@
 <template>
   <form autocomplete='off'>
-    <p>Please type an amount</p>
+    <p>please type an amount</p>
     <!-- amount display -->
     <input v-model='price' @input="setTwoNumberDecimal" @click="moveCursor" ref="input" type='text' class='input pad' value=''>
     <p>{{ language.currency }}</p>
@@ -103,7 +103,7 @@
     </select>
     <br>
     <!-- charge button -->
-    <button @click.prevent="donate" class="charge">{{ language.charge }}</button>
+    <button @click.prevent="donate" class="charge">{{ language.pay }}</button>
   </form>
 </template>
 

@@ -103,7 +103,7 @@ export default {
               router.replace(`/sale/confirmed/${status}?platform=web`)
               window.dataLayer.push({
                 event: 'GAEvent',
-                eventCategory: 'WebTransaction',
+                eventCategory: 'Web Transaction',
                 eventAction: 'Completed',
                 eventLabel: `${vm.address},${data.txid},${status},${vm.$root.$data.settings.currency},${method}`,
                 eventValue: duffs
@@ -112,7 +112,7 @@ export default {
               router.replace(`/sale/confirmed/${status}`)
               window.dataLayer.push({
                 event: 'GAEvent',
-                eventCategory: 'PosTransaction',
+                eventCategory: 'POS Transaction',
                 eventAction: 'Completed',
                 eventLabel: `${vm.address},${data.txid},${status},${vm.$root.$data.settings.currency},${method}`,
                 eventValue: duffs
@@ -152,13 +152,13 @@ export default {
     // set dash amount in duffs
     let duffs = Math.round(parseFloat(this.price.dash) * 100000000)
     // push data to analytics
-    window.dataLayer.push({
-      event: 'GAEvent',
-      eventCategory: 'Transaction',
-      eventAction: 'Initiated',
-      eventLabel: this.address,
-      eventValue: duffs
-    })
+    // window.dataLayer.push({
+    //   event: 'GAEvent',
+    //   eventCategory: 'Transaction',
+    //   eventAction: 'Initiated',
+    //   eventLabel: this.address,
+    //   eventValue: duffs
+    // })
     // set url for cointext
     let url = `https://api.get-spark.com/invoice?addr=${this.address}&amount=${duffs}`
     // get invoice number from cointext
