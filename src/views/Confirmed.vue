@@ -2,7 +2,7 @@
   <div>
     <br>
     <p>{{ language.payment_received }}&nbsp;
-      <img v-if="locked === '1'" id="lock" src="../assets/img/locked.png">
+      <img v-if="locked === 'true'" id="lock" src="../assets/img/locked.png">
       <img v-else id="lock" src="../assets/img/unlocked.png">
     </p>
     <br>

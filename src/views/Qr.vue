@@ -90,34 +90,31 @@ export default {
           // set amount received and instantsend status
           vm.tx.received = amount[0] / 100000000
           vm.tx.locked = data.txlock
-          let status = vm.tx.locked ? '1' : '0'
-          let is = status === '1' ? true : false
+          let status = vm.tx.locked
           let duffs = Math.round(parseFloat(vm.price.dash) * 100000000)
           // we figure out if the cointext screen is showing when we receive funds - for analytics
-          let ct = !vm.qr
-          // let method = vm.qr ? 'qr' : 'cointext'
+          let method = vm.qr ? 'qr' : 'cointext'
           console.log(`incoming: ${vm.tx.received} to ${address[0]}`)
           console.log(`instantsend: ${vm.tx.locked}`)
           // if the amount is what we're looking for (or more), show confirmed screen
           if (vm.tx.received >= parseFloat(vm.price.dash)) {
             // customer completes transaction - we send value, IS status, local currency, qr or cointext - for analytics
-            mixpanel.track('TX', {price: parseFloat(vm.price.dash), is: status, currency: vm.$root.$data.settings.currency, cointext: ct})
             if (vm.$route.query.address) {
               router.replace(`/sale/confirmed/${status}?platform=web`)
               window.dataLayer.push({
                 event: 'GAEvent',
-                eventCategory: 'Transaction',
+                eventCategory: 'WebTransaction',
                 eventAction: 'Completed',
-                eventLabel: `${vm.address},${data.txid},${status},${vm.$root.$data.settings.currency},${ct}`,
+                eventLabel: `${vm.address},${data.txid},${status},${vm.$root.$data.settings.currency},${method}`,
                 eventValue: duffs
               })
             } else {
               router.replace(`/sale/confirmed/${status}`)
               window.dataLayer.push({
                 event: 'GAEvent',
-                eventCategory: 'Transaction',
+                eventCategory: 'PosTransaction',
                 eventAction: 'Completed',
-                eventLabel: `${vm.address},${data.txid},${status},${vm.$root.$data.settings.currency},${ct}`,
+                eventLabel: `${vm.address},${data.txid},${status},${vm.$root.$data.settings.currency},${method}`,
                 eventValue: duffs
               })
             }
@@ -146,12 +143,10 @@ export default {
     this.amount = this.$route.params.amount
     // get current price
     this.price.dash = `${(parseFloat(this.amount) / parseFloat(await spark.getExchangeRate(this.amount.split(' ')[1]))).toFixed(8)} DASH`
-    console.log(this.price.dash)
     // set pice in mdash
     this.price.mdash = `${(parseFloat(this.price.dash) * 1000).toFixed(5)} mDash`
     // get address
     this.address = this.$route.query.address || await spark.getAddress(this.$root.$data.settings.account)
-    console.log(this.address)
     // set uri for qr code
     this.uri = `dash:${this.address}?amount=${parseFloat(this.price.dash)}&is=1`
     // set dash amount in duffs

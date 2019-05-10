@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Charge from '@/views/Charge'
 import Qr from '@/views/Qr'
 import Confirmed from '@/views/Confirmed'
+import Donate from '@/views/Donate'
 import Settings from '@/views/Settings'
 import Connection from '@/views/Connection'
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/sale/:amount',
       name: 'Qr',
       component: Qr
+    },
+    {
+      path: '/donate',
+      name: 'Donate',
+      component: Donate
     },
     {
       path: '/settings',
