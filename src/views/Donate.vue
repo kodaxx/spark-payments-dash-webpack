@@ -2,7 +2,7 @@
   <form autocomplete='off'>
     <p>please type an amount</p>
     <!-- amount display -->
-    <input v-model='price' @input="setTwoNumberDecimal" @click="moveCursor" ref="input" type='text' class='input pad' value=''>
+    <input v-model='price' id="donate-box" @mousedown="noSelect" @input="setTwoNumberDecimal" @click="moveCursor" ref="input" type='text' class='input pad' value=''>
     <p>{{ language.currency }}</p>
     <select v-model="currency">
         <option value="AED">AED - United Arab Emirates Dirham</option>
@@ -149,6 +149,9 @@ export default {
       let len = this.native.length
       this.$refs.input.setSelectionRange(len, len)
     },
+    noSelect: function () {
+      return false;
+    },
     // begins purchase
     donate: function () {
       // if amount is empty, notify merchant and stop function
@@ -214,4 +217,18 @@ export default {
   button:active {
     transform: scale(0.9);
   }
+  #donate-box {
+   -webkit-touch-callout: none;
+   -webkit-user-select: none;
+   -khtml-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+ }
+ ::-moz-selection {
+   background: transparent;
+ }
+ ::selection {
+   background: transparent;
+ }
 </style>

@@ -27,7 +27,7 @@ export function getExchangeRate (currency) {
 
 export function getAddress (account) {
   return new Promise(resolve => {
-    if (account.startsWith('xpub')) {
+    if (account.startsWith('xpub') || account.startsWith('tpub')) {
       // get current address index
       let index = localStorage.getItem('index')
       let root = bitcoin.bip32.fromBase58(account)

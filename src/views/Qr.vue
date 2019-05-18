@@ -88,7 +88,7 @@ export default {
         // if address matches the address we have in settings
         if (address[0] === vm.address) {
           // set amount received and instantsend status
-          vm.tx.received = amount[0] / 100000000
+          vm.tx.received = vm.tx.received + (amount[0] / 100000000)
           vm.tx.locked = data.txlock
           let status = vm.tx.locked
           let duffs = Math.round(parseFloat(vm.price.dash) * 100000000)
