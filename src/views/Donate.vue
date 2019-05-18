@@ -150,7 +150,7 @@ export default {
       this.$refs.input.setSelectionRange(len, len)
     },
     noSelect: function () {
-      return false;
+      return false
     },
     // begins purchase
     donate: function () {
