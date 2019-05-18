@@ -118,6 +118,10 @@ export default {
                 eventValue: duffs
               })
             }
+          } else {
+            let remaining = parseFloat(vm.price.dash) - vm.tx.received
+            vm.uri = `dash:${vm.address}?amount=${remaining}&is=1`
+            // TODO: change price, debate over remaining vs received
           }
         }
       })

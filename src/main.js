@@ -4,7 +4,7 @@ import router from './router'
 import socketio from 'socket.io-client'
 import VueSocketIO from 'vue-socket.io'
 
-const env = 'mainnet'
+const env = 'testnet'
 
 // mainnet: https://insight.dash.org:443 - testnet: https://testnet-insight.dashevo.org:443
 export const url = env === 'mainnet' ? socketio('https://insight.dash.org:443') : socketio('https://testnet-insight.dashevo.org:443')
