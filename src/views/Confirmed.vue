@@ -10,7 +10,7 @@
     <br>
     <p>{{ language.thanks }}</p>
     <br>
-    <button v-if="!this.$route.query.platform === 'web'" @click="done">{{ language.done }}</button>
+    <button v-if="!web" @click="done">{{ language.done }}</button>
   </div>
 </template>
 
@@ -32,6 +32,16 @@ export default {
     done: function () {
       // navigate home
       router.replace('/')
+    }
+  },
+
+  computed: {
+    web: function () {
+      if (this.$route.query.platform === 'web') {
+        return true
+      } else {
+        return false
+      }
     }
   },
 

@@ -163,8 +163,9 @@ export default {
     //   eventLabel: this.address,
     //   eventValue: duffs
     // })
-    // set url for cointext
-    let url = `https://api.get-spark.com/invoice?addr=${this.address}&amount=${duffs}`
+    // set url for cointext or dashtext
+    // let url = `https://api.get-spark.com/invoice?addr=${this.address}&amount=${duffs}`
+    let url = `https://api.get-spark.com/dashtext?addr=${this.address}&amount=${duffs}`
     // get invoice number from cointext
     console.log(url)
     let vm = this
