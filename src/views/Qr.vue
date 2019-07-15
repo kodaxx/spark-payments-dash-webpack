@@ -78,7 +78,7 @@ export default {
 
   sockets: {
     // listen for 'tx' event from insight
-    tx: function (data) {
+    txlock: function (data) {
       // bind 'this' for use inside the function
       let vm = this
       // check each address in vout
