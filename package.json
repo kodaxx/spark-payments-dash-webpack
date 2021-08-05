@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "@xkeshi/vue-qrcode": "^1.0.0",
-    "axios": "^0.18.0",
-    "bitcoinjs-lib": "^4.0.1",
+    "axios": "^0.18.1",
+    "bitcoinjs-lib": "^4.0.5",
     "cordova-android": "^7.1.1",
     "cordova-ios": "^4.5.5",
     "epic-spinners": "^1.0.3",

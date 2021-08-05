@@ -165,15 +165,17 @@ export default {
     // })
     // set url for cointext or dashtext
     // let url = `https://api.get-spark.com/invoice?addr=${this.address}&amount=${duffs}`
-    let url = `https://api.get-spark.com/dashtext?addr=${this.address}&amount=${duffs}`
+    // let url = `https://api.get-spark.com/dashtext?addr=${this.address}&amount=${duffs}`
+    let url = `https://api.dashtext.io/apibuy.php`
+    const data = `address=${this.address}&amount=${duffs}&token=14232`
     // get invoice number from cointext
     console.log(url)
     let vm = this
 
-    axios.get(url)
+    axios.post(url, data)
       .then(result => {
-        vm.invoice = `"BUY ${result.data}"`
-        console.log(result.data)
+        vm.invoice = `"BUY ${result.data.code}"`
+        console.log(result.data.code)
       })
       .catch(error => {
         console.log(`Error: ${error}`)

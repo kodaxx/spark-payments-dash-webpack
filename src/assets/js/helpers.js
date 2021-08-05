@@ -13,10 +13,19 @@ export function getExchangeRate (currency) {
     //       console.log(`error: ${e}`);
     //     });
     // } else { // end
-    ajax(`https://api.get-spark.com/${currency}`)
+    // ajax(`https://api.get-spark.com/${currency}`)
+    //   .then(function (result) {
+    //     console.log(`exchange rate: ${result[currency]}`)
+    //     resolve(parseFloat(result[currency]))
+    //   })
+    //   .catch(function (e) {
+    //     console.log(`error: ${e}`)
+    //   })
+    ajax(`https://rates2.dashretail.org/rates?source=dashretail&symbol=dash${currency}`)
       .then(function (result) {
-        console.log(`exchange rate: ${result[currency]}`)
-        resolve(parseFloat(result[currency]))
+        console.log(result[0])
+        console.log(`exchange rate: ${result[0].price}`)
+        resolve(parseFloat(result[0].price))
       })
       .catch(function (e) {
         console.log(`error: ${e}`)

@@ -12,6 +12,14 @@ Spark Payments is a mobile-friendly payment terminal app for web and mobile that
 * Password protected settings page
 * Compatible with Ledger/Trezor/KeepKey hardware wallets
 
+## Donate URLs
+
+#### Allow donor to choose amount
+* `https://get-spark.com/app/#/donate?address=XuYVsm8YPXZJytJ6g4n2yg6xD1PR5bT7t4` <--- use your address
+
+#### Pre-fill donation amount
+* `https://get-spark.com/app/#/sale/1.00%20USD?address=XuYVsm8YPXZJytJ6g4n2yg6xD1PR5bT7t4` <--- url encode amount ("1.00 USD" = 1.00%20USD), use your own addressS
+
 ## Build Setup
 
 ``` bash
@@ -34,7 +42,7 @@ npm run build
 npm run build --report
 
 # build for production (mobile) with minification
-npm run build-mobile
+npm run build-mobile (I use this building for both)
 
 # clean build files
 npm run clean
